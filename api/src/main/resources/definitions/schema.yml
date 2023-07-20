@@ -1,0 +1,14 @@
+schema:
+  User:
+    type: object
+    title: User
+    properties:
+      id:
+        format: int64
+        type: integer
+      email:
+        example: pf@imunixx.de
+        type: string
+      activated:
+        example: false
+        type: boolean

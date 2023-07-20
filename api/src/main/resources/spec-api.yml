@@ -1,0 +1,23 @@
+openapi: 3.0.3
+info:
+  title: Api
+  description: API generated
+  termsOfService: http:swagger.io/terms
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  version: 1.0.0
+servers:
+  - url: http://localhost:8080/
+
+tags:
+  - name: User
+    description: Operations to manage User
+
+paths:
+  /user:
+    $ref: user.yml#/~1user
+  /user/{id}:
+    $ref: user.yml#/~1user~1{id}
+  /users:
+    $ref: user.yml#/~1users
