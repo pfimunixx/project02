@@ -5,7 +5,7 @@
     description: create User
     operationId: createUser
     requestBody:
-      $ref: definitions/components.yml#/requestBodies/UserDto
+      $ref: definitions/components.yml#/requestBodies/UserCreateDto
     responses:
       "200":
         $ref: definitions/components.yml#/responses/UserDto
@@ -42,7 +42,7 @@
     description: update user by id
     operationId: updateUserById
     requestBody:
-      $ref: definitions/components.yml#/requestBodies/UserDto
+      $ref: definitions/components.yml#/requestBodies/UserUpdateDto
     parameters:
       - $ref: definitions/components.yml#/parameters/id
     responses:

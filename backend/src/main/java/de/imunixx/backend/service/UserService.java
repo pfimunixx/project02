@@ -2,7 +2,9 @@ package de.imunixx.backend.service;
 
 import de.imunixx.api.entity.User;
 import de.imunixx.api.mapper.BackEndMapper;
+import de.imunixx.api.model.UserCreateDTO;
 import de.imunixx.api.model.UserDTO;
+import de.imunixx.api.model.UserUpdateDTO;
 import de.imunixx.backend.exception.UserNotFoundException;
 import de.imunixx.backend.repository.UserRepository;
 import jakarta.transaction.Transactional;
@@ -23,8 +25,8 @@ public class UserService {
     private final UserRepository userRepository;
     private final BackEndMapper mapper;
 
-    public UserDTO addUser(UserDTO userDTO) {
-        User entity = mapper.toEntity(userDTO);
+    public UserDTO addUser(UserCreateDTO userCreateDTO) {
+        User entity = mapper.toEntityFromCreateDto(userCreateDTO);
         return mapper.toDto(userRepository.save(entity));
     }
 
@@ -33,8 +35,8 @@ public class UserService {
                 .orElseThrow(() -> new UserNotFoundException("User by id" + id + " not found")));
     }
 
-    public UserDTO updateUser(UserDTO userDTO) {
-        return mapper.toDto(userRepository.save(mapper.toEntity(userDTO)));
+    public UserDTO updateUser(UserUpdateDTO userUpdateDTO) {
+        return mapper.toDto(userRepository.save(mapper.toEntityFromUpdateDto(userUpdateDTO)));
     }
 
     public void deleteUserById(Long id) {

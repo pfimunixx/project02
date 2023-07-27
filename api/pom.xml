@@ -27,11 +27,11 @@
         <allApis>${Api-1}<!--${Api-2}${Api-3}${Api-4}--></allApis>
 
         <Model-1>User</Model-1>
-        <!--<Model-2>Configkey,Language,Links,SPConfig,SPConfigExt,SPwithBrowserChk,ServiceProvider,</Model-2>
-        <Model-3>Sptranslation,SpTransForm,SpTransFormExt,SupportedBrowser,</Model-3>
-        <Model-4>Translation,Translationkey,LanguageFormater,Maintenance,</Model-4>
+        <Model-2>UserCreate</Model-2>
+        <Model-3>UserUpdate</Model-3>
+        <!--<Model-4>Translation,Translationkey,LanguageFormater,Maintenance,</Model-4>
         <Model-5>MaintenanceTemplate,MaintenancePreview,DataCenter,TimeZoneWithOffset</Model-5>-->
-        <allModels>${Model-1}<!--${Model-2}${Model-3}${Model-4}${Model-5}--></allModels>
+        <allModels>${Model-1},${Model-2},${Model-3}<!--${Model-4}${Model-5}--></allModels>
     </properties>
     <dependencies>
         <dependency>
@@ -102,18 +102,6 @@
 
     <build>
         <plugins>
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-                <configuration>
-                    <excludes>
-                        <exclude>
-                            <groupId>org.projectlombok</groupId>
-                            <artifactId>lombok</artifactId>
-                        </exclude>
-                    </excludes>
-                </configuration>
-            </plugin>
             <plugin> <!--https://openapi-generator.tech/docs/plugins/-->
                 <groupId>org.openapitools</groupId>
                 <artifactId>openapi-generator-maven-plugin</artifactId>

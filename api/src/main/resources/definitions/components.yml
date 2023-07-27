@@ -22,6 +22,22 @@ requestBodies:
         schema:
           $ref: schema.yml#/schema/User
 
+  UserCreateDto:
+    description: User
+    required: true
+    content:
+      application/json:
+        schema:
+          $ref: schema.yml#/schema/UserCreate
+
+  UserUpdateDto:
+    description: User
+    required: true
+    content:
+      application/json:
+        schema:
+          $ref: schema.yml#/schema/UserUpdate
+
 #-------------------------------------------------------------------------------
 # responses
 #-------------------------------------------------------------------------------

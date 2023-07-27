@@ -1,0 +1,47 @@
+version: "3.8"
+services:
+
+  postgres:
+    container_name: postgres
+    image: postgres
+    restart: always
+    ports:
+      - "5432:5432"
+    environment:
+      - DATABASE_HOST=127.0.0.1
+      - POSTGRES_USER=root
+      - POSTGRES_PASSWORD=root
+      - POSTGRES_DB=mydb
+    networks:
+      - mynetwork
+    volumes:
+      - mydbdata:/var/lib/postgresql/data
+
+
+  pgadmin:
+    container_name: pgadmin
+    image: dpage/pgadmin4
+    environment:
+      PGADMIN_DEFAULT_EMAIL: "pf@imunixx.de"
+      PGADMIN_DEFAULT_PASSWORD: "root"
+    ports:
+      - 80:80
+    depends_on:
+      - postgres
+    networks:
+      - mynetwork
+    volumes:
+      - pgadmindata:/var/lib/pgadmin
+      - ./pgadmin4:/root/.pgadmin
+
+
+
+networks:
+  mynetwork:
+    driver: bridge
+    name: mynetwork
+
+
+volumes:
+  mydbdata:
+  pgadmindata:

@@ -47,6 +47,7 @@
         <!--plugin versions-->
         <openapi-generator-maven-plugin>6.6.0</openapi-generator-maven-plugin>
         <properties-maven-plugin>1.1.0</properties-maven-plugin>
+        <maven-compiler-plugin>3.11.7</maven-compiler-plugin>
         
     </properties>
     
@@ -124,24 +125,18 @@
                 <artifactId>spring-boot-starter-web</artifactId>
                 <version>${spring-boot-starter}</version>
             </dependency>
+            <dependency>
+                <groupId>de.imunixx</groupId>
+                <artifactId>api</artifactId>
+                <version>0.0.1-SNAPSHOT</version>
+                <type>jar</type>
+            </dependency>
         </dependencies>
     </dependencyManagement>
     
     <build>
         <pluginManagement>
             <plugins>
-                <plugin>
-                    <groupId>org.springframework.boot</groupId>
-                    <artifactId>spring-boot-maven-plugin</artifactId>
-                    <configuration>
-                        <excludes>
-                            <exclude>
-                                <groupId>org.projectlombok</groupId>
-                                <artifactId>lombok</artifactId>
-                            </exclude>
-                        </excludes>
-                    </configuration>
-                </plugin>
                 <plugin> <!--https://openapi-generator.tech/docs/plugins/-->
                     <groupId>org.openapitools</groupId>
                     <artifactId>openapi-generator-maven-plugin</artifactId>
