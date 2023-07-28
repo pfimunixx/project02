@@ -20,13 +20,13 @@
         <model.modelPackage>de.imunixx.api.model</model.modelPackage>
         <api.basePackage>de.imunixx.api.controller</api.basePackage>
 
-        <Api-1>User</Api-1>
+        <Api-1>User,UserData,Address,Country</Api-1>
         <!--<Api-2>ServiceProvider,SpConfig,Translation,Sptranslation,</Api-2>
         <Api-3>IsoLocale,KeysTranslated,WebController,Maintenance,</Api-3>
         <Api-4>MaintenanceTemplate,DataCenter</Api-4>-->
         <allApis>${Api-1}<!--${Api-2}${Api-3}${Api-4}--></allApis>
 
-        <Model-1>User</Model-1>
+        <Model-1>User,UserData,Address,Country,State,City,Street,Email,Phone</Model-1>
         <Model-2>UserCreate</Model-2>
         <Model-3>UserUpdate</Model-3>
         <!--<Model-4>Translation,Translationkey,LanguageFormater,Maintenance,</Model-4>

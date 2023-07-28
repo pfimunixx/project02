@@ -21,6 +21,29 @@ requestBodies:
       application/json:
         schema:
           $ref: schema.yml#/schema/User
+  
+  AddressDto:
+    description: Address
+    required: true
+    content:
+      application/json:
+        schema:
+          $ref: schema.yml#/schema/Address
+  CountryDto:
+    description: UserData
+    required: true
+    content:
+      application/json:
+        schema:
+          $ref: schema.yml#/schema/Country        
+          
+  UserDataDto:
+    description: UserData
+    required: true
+    content:
+      application/json:
+        schema:
+          $ref: schema.yml#/schema/UserData        
 
   UserCreateDto:
     description: User
@@ -58,3 +81,45 @@ responses:
           type: array
           items:
             $ref: schema.yml#/schema/User
+            
+  UserDataDto:
+    description: UserData
+    required: true
+    content:
+      application/json:
+        schema:
+          $ref: schema.yml#/schema/UserData
+          
+  AddressDto:
+    description: Address
+    required: true
+    content:
+      application/json:
+        schema:
+          $ref: schema.yml#/schema/Address
+  AddressListDto:
+    description: AddressList
+    required: true
+    content:
+      application/json:
+        schema:
+          type: array
+          items:
+            $ref: schema.yml#/schema/Address        
+  
+  CountryDto:
+    description: UserData
+    required: true
+    content:
+      application/json:
+        schema:
+          $ref: schema.yml#/schema/Country
+  CountryListDto:
+    description: CountryList
+    required: true
+    content:
+      application/json:
+        schema:
+          type: array
+          items:
+            $ref: schema.yml#/schema/Country        

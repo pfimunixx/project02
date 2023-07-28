@@ -13,6 +13,12 @@ servers:
 tags:
   - name: User
     description: Operations to manage User
+  - name: UserData
+    description: Operations to manage UserData
+  - name: Address
+    description: Operations to manage Address  
+  - name: Country
+    description: Operations to manage Country  
 
 paths:
   /user:
@@ -21,3 +27,19 @@ paths:
     $ref: user.yml#/~1user~1{id}
   /users:
     $ref: user.yml#/~1users
+  /user/data:
+    $ref: user.yml#/~1user~1data
+  /user/data/{id}:
+    $ref: user.yml#/~1user~1data~1{id}
+    
+  /address:
+    $ref: address.yml#/~1address
+  /address/{id}:
+    $ref: address.yml#/~1address~1{id} 
+  /addresses:
+    $ref: address.yml#/~1addresses
+    
+  /address/country:
+    $ref: address.yml#/~1address~1country  
+  /address/country/{id}:
+    $ref: address.yml#/~1address~1country~1{id} 

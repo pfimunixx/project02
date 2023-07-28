@@ -1,14 +1,14 @@
-/user:
+/address:
   post:
     tags:
-      - User
-    description: create User
-    operationId: createUser
+      - Address
+    description: create Address
+    operationId: createAddress
     requestBody:
-      $ref: definitions/components.yml#/requestBodies/UserDto
+      $ref: definitions/components.yml#/requestBodies/AddressDto
     responses:
       "200":
-        $ref: definitions/components.yml#/responses/UserDto
+        $ref: definitions/components.yml#/responses/AddressDto
         description: successful operation
       "401":
         description: Unauthorized
@@ -16,19 +16,19 @@
         description: Forbidden
       "404":
         description: Not Found
-    summary: create user
+    summary: create address
     
-/user/data:
+/address/country:
   post:
     tags:
-      - UserData
-    description: create UserData
-    operationId: createUserData
+      - Country
+    description: create Country
+    operationId: createCountry
     requestBody:
-      $ref: definitions/components.yml#/requestBodies/UserDataDto
+      $ref: definitions/components.yml#/requestBodies/CountryDto
     responses:
       "200":
-        $ref: definitions/components.yml#/responses/UserDataDto
+        $ref: definitions/components.yml#/responses/CountryDto
         description: successful operation
       "401":
         description: Unauthorized
@@ -36,19 +36,19 @@
         description: Forbidden
       "404":
         description: Not Found
-    summary: create userData
+    summary: create country
     
-/user/{id}:
+/address/{id}:
   get:
     tags:
-      - User
-    description: get a user by id
-    operationId: getUserById
+      - Address
+    description: get a address by id
+    operationId: getAddressById
     parameters:
       - $ref: definitions/components.yml#/parameters/id
     responses:
       "200":
-        $ref: definitions/components.yml#/responses/UserDto
+        $ref: definitions/components.yml#/responses/AddressDto
         description: successful operation
       "401":
         description: Unauthorized
@@ -58,16 +58,16 @@
         description: Not Found
   put:
     tags:
-      - User
-    description: update user by id
-    operationId: updateUserById
+      - Address
+    description: update address by id
+    operationId: updateAddressById
     requestBody:
-      $ref: definitions/components.yml#/requestBodies/UserDto
+      $ref: definitions/components.yml#/requestBodies/AddressDto
     parameters:
       - $ref: definitions/components.yml#/parameters/id
     responses:
       "200":
-        $ref: definitions/components.yml#/responses/UserDto
+        $ref: definitions/components.yml#/responses/AddressDto
         description: successful operation
       "401":
         description: Unauthorized
@@ -77,9 +77,9 @@
         description: Not Found
   delete:
     tags:
-      - User
-    description: delete user by id
-    operationId: deleteUserById
+      - Address
+    description: delete address by id
+    operationId: deleteAddressById
     parameters:
       - $ref: definitions/components.yml#/parameters/id
     responses:
@@ -98,17 +98,17 @@
       "404":
         description: Not Found
 
-/user/data/{id}:
+/address/country/{id}:
   get:
     tags:
-      - UserData
-    description: get a userData by id
-    operationId: getUserDataById
+      - Country
+    description: get a country by id
+    operationId: getCountryById
     parameters:
       - $ref: definitions/components.yml#/parameters/id
     responses:
       "200":
-        $ref: definitions/components.yml#/responses/UserDataDto
+        $ref: definitions/components.yml#/responses/CountryDto
         description: successful operation
       "401":
         description: Unauthorized
@@ -118,16 +118,16 @@
         description: Not Found
   put:
     tags:
-      - UserData
-    description: update userData by id
-    operationId: updateUserDataById
+      - Country
+    description: update country by id
+    operationId: updateCountryById
     requestBody:
-      $ref: definitions/components.yml#/requestBodies/UserDataDto
+      $ref: definitions/components.yml#/requestBodies/CountryDto
     parameters:
       - $ref: definitions/components.yml#/parameters/id
     responses:
       "200":
-        $ref: definitions/components.yml#/responses/UserDataDto
+        $ref: definitions/components.yml#/responses/CountryDto
         description: successful operation
       "401":
         description: Unauthorized
@@ -137,9 +137,9 @@
         description: Not Found
   delete:
     tags:
-      - UserData
-    description: delete userData by id
-    operationId: deleteUserDataById
+      - Country
+    description: delete country by id
+    operationId: deleteCountryById
     parameters:
       - $ref: definitions/components.yml#/parameters/id
     responses:
@@ -158,18 +158,34 @@
       "404":
         description: Not Found
 
-/users:
+/addresses:
   get:
     tags:
-      - User
-    description: get all users
-    operationId: getUserList
+      - Addresses
+    description: get all addresses
+    operationId: getAddressList
     responses:
       "200":
-        $ref: definitions/components.yml#/responses/UserListDto
+        $ref: definitions/components.yml#/responses/AddressListDto
       "401":
         description: Unauthorized
       "403":
         description: Forbidden
       "404":
         description: Not Found
+
+/address/countries:
+  get:
+    tags:
+      - Addresses
+    description: get all countries
+    operationId: getCountryList
+    responses:
+      "200":
+        $ref: definitions/components.yml#/responses/CountryListDto
+      "401":
+        description: Unauthorized
+      "403":
+        description: Forbidden
+      "404":
+        description: Not Found        

@@ -6,21 +6,7 @@ schema:
       id:
         format: int64
         type: integer
-      email:
-        example: pf@imunixx.de
-        type: string
-      activated:
-        example: false
-        type: boolean
-
-  UserCreate:
-    type: object
-    title: UserCreate
-    properties:
-      id:
-        format: int64
-        type: integer
-      email:
+      userName:
         example: pf@imunixx.de
         type: string
       password:
@@ -32,23 +18,232 @@ schema:
       activated:
         example: false
         type: boolean
-
-  UserUpdate:
+      userDataId:
+        type: integer
+        format: int64
+          
+  UserData:
     type: object
-    title: UserUpdate
+    title: information about the user
     properties:
       id:
-        format: int64
         type: integer
+        format: int64
+      userId:
+        type: integer
+        format: int64
+        example: 1
+      title:
+        type: string
+        example: Ingeniera de Humedales
+      firstName:
+        type: string
+        example: Felicitada
+      sureName:
+        type: string
+        example: ConstantementeHúmedaYDispuesta
+      addressList:
+        type: array
+        items:
+          $ref: '#/schema/Address'
+      emailList:
+        type: array
+        items:
+          $ref: '#/schema/Address'
+      phoneList:    
+        type: array
+        items:
+          $ref: '#/schema/Address'
+          
+  Address:
+    type: object
+    title: user contact data
+    properties:
+      id:
+        type: integer
+        format: int64
+      userDataId:
+        type: integer
+        format: int64
+        example: 1
+      countryId:
+        type: integer
+        format: int64
+        example: 1
+      stateId:
+        type: integer
+        format: int64
+        example: 1
+      cityId:
+        type: integer
+        format: int64
+        example: 1
+      zipCode:
+        type: string
+      streetId:
+        type: integer
+        format: int64
+        example: 1
+      houseNumber:
+        type: string
+        pattern: '^[0-9a-zA-Z\s/-]+$'
+        
+  Country:
+    type: object
+    title: Country
+    properties:
+      id:
+        type: integer
+        format: int64
+      countryName:
+        type: string
+        example: Spain
+      countryIsoCode:   
+        type: string
+        example: Spain
+      addressList:  
+        type: array
+        items:
+          $ref: '#/schema/Address'
+          
+  State:
+    type: object
+    title: State
+    properties:
+      id:
+        type: integer
+        format: int64
+      stateName:
+        type: string
+        example: País Vasco
+      addressList:  
+        type: array
+        items:
+          $ref: '#/schema/Address'  
+        
+  City:
+    type: object
+    title: City
+    properties:
+      id:
+        type: integer
+        format: int64
+      cityName:
+        type: string
+        example: Bilbao
+      addressList:  
+        type: array
+        items:
+          $ref: '#/schema/Address'
+          
+  Street:
+    type: object
+    title: Street
+    properties:
+      id:
+        type: integer
+        format: int64
+      streetName:
+        type: string
+        example: Gran Vía de Don Diego López de Haro
+      addressList:  
+        type: array
+        items:
+          $ref: '#/schema/Address'
+          
+  Email:        
+    type: object
+    title: Email
+    properties:
+      id:
+        type: integer
+        format: int64
+      userDataId:
+        type: integer
+        format: int64
+        example: 1  
       email:
-        example: pf@imunixx.de
         type: string
-      password:
-        example: 03ac674216f3e15c761ee1a5e255f067953623c8b388b4459e13f978d7c846f4
-        type: string
-      userCode:
-        example: 0
-        type: string
-      activated:
-        example: false
+        format: email
+        pattern: ^\S+@\S+\.\S+$
+      isLoginEmail:
         type: boolean
+        
+        
+  Phone:      
+    type: object
+    title: Phone
+    properties:
+      id:
+        type: integer
+        format: int64
+      userDataId:
+        type: integer
+        format: int64
+        example: 1  
+      phoneType:
+        type: string
+        enum: [Home, Work, Mobile, Fax, Other]
+      phoneNumber:
+        type: string
+        pattern: '^\+?[1-9]\d{1,14}$'
+        
+        
+        
+# sry for changing everything       
+#  User:
+#    type: object
+#    title: User
+#    properties:
+#      id:
+#        format: int64
+#        type: integer
+#      email:
+#        example: pf@imunixx.de
+#        type: string
+#      activated:
+#        example: false
+#        type: boolean
+
+# its Ok if this is your workaround to get different examples for swagger
+# otherwise you dont need that -> may be there is an other reason plz comment
+# may be I dont get what it is for
+#  UserCreate:
+#    type: object
+#    title: UserCreate
+#    properties:
+#      id:
+#        format: int64
+#        type: integer
+#      email:
+#        example: pf@imunixx.de
+#        type: string
+#      password:
+#        example: 03ac674216f3e15c761ee1a5e255f067953623c8b388b4459e13f978d7c846f4
+#        type: string
+#      userCode:
+#        example: 0
+#        type: string
+#      activated:
+#        example: false
+#        type: boolean
+#
+#  UserUpdate:
+#    type: object
+#    title: UserUpdate
+#    properties:
+#      id:
+#        format: int64
+#        type: integer
+#      email:
+#        example: pf@imunixx.de
+#        type: string
+#      password:
+#        example: 03ac674216f3e15c761ee1a5e255f067953623c8b388b4459e13f978d7c846f4
+#        type: string
+#      userCode:
+#        example: 0
+#        type: string
+#      activated:
+#        example: false
+#        type: boolean
