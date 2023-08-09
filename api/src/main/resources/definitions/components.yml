@@ -21,21 +21,14 @@ requestBodies:
       application/json:
         schema:
           $ref: schema.yml#/schema/User
-  
-  AddressDto:
-    description: Address
+
+  UserCreateDto:
+    description: UserCreate
     required: true
     content:
       application/json:
         schema:
-          $ref: schema.yml#/schema/Address
-  CountryDto:
-    description: UserData
-    required: true
-    content:
-      application/json:
-        schema:
-          $ref: schema.yml#/schema/Country        
+          $ref: schema.yml#/schema/UserCreate
           
   UserDataDto:
     description: UserData
@@ -45,21 +38,76 @@ requestBodies:
         schema:
           $ref: schema.yml#/schema/UserData        
 
-  UserCreateDto:
-    description: User
+  UserActivatedDto:
+    description: UserActivated
     required: true
     content:
       application/json:
         schema:
-          $ref: schema.yml#/schema/UserCreate
+          $ref: schema.yml#/schema/UserActivated
 
-  UserUpdateDto:
-    description: User
+  ProfileDto:
+    description: Profile
     required: true
     content:
       application/json:
         schema:
-          $ref: schema.yml#/schema/UserUpdate
+          $ref: schema.yml#/schema/Profile
+
+  MovementDto:
+    description: Movement
+    required: true
+    content:
+      application/json:
+        schema:
+          $ref: schema.yml#/schema/Movement
+
+  FixedMovementDto:
+    description: FixedMovement
+    required: true
+    content:
+      application/json:
+        schema:
+          $ref: schema.yml#/schema/FixedMovement
+
+  SpendingExpectationDto:
+    description: SpendingExpectation
+    required: true
+    content:
+      application/json:
+        schema:
+          $ref: schema.yml#/schema/SpendingExpectation
+
+  EmailDto:
+    description: Email
+    required: true
+    content:
+      application/json:
+        schema:
+          $ref: schema.yml#/schema/Email
+
+  PhoneDto:
+    description: Phone
+    required: true
+    content:
+      application/json:
+        schema:
+          $ref: schema.yml#/schema/Phone
+
+#  AddressDto:
+#    description: Address
+#    required: true
+#    content:
+#      application/json:
+#        schema:
+#          $ref: schema.yml#/schema/Address
+#  CountryDto:
+#    description: UserData
+#    required: true
+#    content:
+#      application/json:
+#        schema:
+#          $ref: schema.yml#/schema/Country
 
 #-------------------------------------------------------------------------------
 # responses
@@ -72,6 +120,7 @@ responses:
       application/json:
         schema:
           $ref: schema.yml#/schema/User
+
   UserListDto:
     description: UserList
     required: true
@@ -89,37 +138,117 @@ responses:
       application/json:
         schema:
           $ref: schema.yml#/schema/UserData
+
+  UserActivatedDto:
+    description: UserActivated
+    required: true
+    content:
+      application/json:
+        schema:
+          $ref: schema.yml#/schema/UserActivated
+
+  ProfileDto:
+    description: Profile
+    required: true
+    content:
+      application/json:
+        schema:
+          $ref: schema.yml#/schema/Profile
+
+  ProfileListDto:
+    description: ProfileList
+    required: true
+    content:
+      application/json:
+        schema:
+          type: array
+          items:
+            $ref: schema.yml#/schema/Profile
+
+  MovementDto:
+    description: Movement
+    required: true
+    content:
+      application/json:
+        schema:
+          $ref: schema.yml#/schema/Movement
+
+  MovementListDto:
+    description: MovementList
+    required: true
+    content:
+      application/json:
+        schema:
+          type: array
+          items:
+            $ref: schema.yml#/schema/Movement
+
+  FixedMovementDto:
+    description: FixedMovement
+    required: true
+    content:
+      application/json:
+        schema:
+          $ref: schema.yml#/schema/FixedMovement
+
+  FixedMovementListDto:
+    description: FixedMovementList
+    required: true
+    content:
+      application/json:
+        schema:
+          type: array
+          items:
+            $ref: schema.yml#/schema/FixedMovement
+
+  SpendingExpectationDto:
+    description: SpendingExpectation
+    required: true
+    content:
+      application/json:
+        schema:
+          $ref: schema.yml#/schema/SpendingExpectation
+
+  SpendingExpectationListDto:
+    description: SpendingExpectationList
+    required: true
+    content:
+      application/json:
+        schema:
+          type: array
+          items:
+            $ref: schema.yml#/schema/SpendingExpectation
           
-  AddressDto:
-    description: Address
-    required: true
-    content:
-      application/json:
-        schema:
-          $ref: schema.yml#/schema/Address
-  AddressListDto:
-    description: AddressList
-    required: true
-    content:
-      application/json:
-        schema:
-          type: array
-          items:
-            $ref: schema.yml#/schema/Address        
-  
-  CountryDto:
-    description: UserData
-    required: true
-    content:
-      application/json:
-        schema:
-          $ref: schema.yml#/schema/Country
-  CountryListDto:
-    description: CountryList
-    required: true
-    content:
-      application/json:
-        schema:
-          type: array
-          items:
-            $ref: schema.yml#/schema/Country        
+#  AddressDto:
+#    description: Address
+#    required: true
+#    content:
+#      application/json:
+#        schema:
+#          $ref: schema.yml#/schema/Address
+#  AddressListDto:
+#    description: AddressList
+#    required: true
+#    content:
+#      application/json:
+#        schema:
+#          type: array
+#          items:
+#            $ref: schema.yml#/schema/Address
+#
+#  CountryDto:
+#    description: UserData
+#    required: true
+#    content:
+#      application/json:
+#        schema:
+#          $ref: schema.yml#/schema/Country
+#  CountryListDto:
+#    description: CountryList
+#    required: true
+#    content:
+#      application/json:
+#        schema:
+#          type: array
+#          items:
+#            $ref: schema.yml#/schema/Country

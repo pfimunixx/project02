@@ -6,6 +6,7 @@ schema:
       id:
         format: int64
         type: integer
+        example: null
       userName:
         example: pf@imunixx.de
         type: string
@@ -15,12 +16,42 @@ schema:
       userCode:
         example: 0
         type: string
-      activated:
-        example: false
-        type: boolean
+      profilesList:
+        type: array
+        items:
+          $ref: '#/schema/Profile'
+      userActivatedId:
+        type: integer
+        format: int64
+        example: null
       userDataId:
         type: integer
         format: int64
+        example: null
+
+  UserCreate:
+    type: object
+    title: UserCreate
+    properties:
+      userName:
+        example: pf@imunixx.de
+        type: string
+      password:
+        example: 03ac674216f3e15c761ee1a5e255f067953623c8b388b4459e13f978d7c846f4
+        type: string
+      userCode:
+        example: 0
+        type: string
+      firstName:
+        type: string
+        example: Felicitada
+      surName:
+        type: string
+        example: ConstantementeHúmedaYDispuesta
+      phone:
+        type: string
+        pattern: '^\+?[1-9]\d{1,14}$'
+        example: +34666666666
           
   UserData:
     type: object
@@ -29,164 +60,280 @@ schema:
       id:
         type: integer
         format: int64
+        example: null
       userId:
         type: integer
         format: int64
-        example: 1
-      title:
-        type: string
-        example: Ingeniera de Humedales
+        example: null
       firstName:
         type: string
         example: Felicitada
-      sureName:
+      surName:
         type: string
         example: ConstantementeHúmedaYDispuesta
-      addressList:
-        type: array
-        items:
-          $ref: '#/schema/Address'
       emailList:
         type: array
         items:
-          $ref: '#/schema/Address'
+          $ref: '#/schema/Email'
       phoneList:    
         type: array
         items:
-          $ref: '#/schema/Address'
-          
-  Address:
+          $ref: '#/schema/Phone'
+
+  UserActivated:
     type: object
-    title: user contact data
+    title: UserActivated
+    properties:
+      id:
+        format: int64
+        type: integer
+        example: null
+      userId:
+        type: integer
+        format: int64
+        example: null
+      isActivated:
+        type: boolean
+
+  Profile:
+    type: object
+    title: Profile
     properties:
       id:
         type: integer
         format: int64
-      userDataId:
+        example: null
+      userId:
         type: integer
         format: int64
-        example: 1
-      countryId:
-        type: integer
-        format: int64
-        example: 1
-      stateId:
-        type: integer
-        format: int64
-        example: 1
-      cityId:
-        type: integer
-        format: int64
-        example: 1
-      zipCode:
+      name:
         type: string
-      streetId:
-        type: integer
-        format: int64
-        example: 1
-      houseNumber:
-        type: string
-        pattern: '^[0-9a-zA-Z\s/-]+$'
-        
-  Country:
-    type: object
-    title: Country
-    properties:
-      id:
-        type: integer
-        format: int64
-      countryName:
-        type: string
-        example: Spain
-      countryIsoCode:   
-        type: string
-        example: Spain
-      addressList:  
+        example: Profile01
+      movementsList:
         type: array
         items:
-          $ref: '#/schema/Address'
-          
-  State:
+          $ref: '#/schema/Movement'
+      fixedMovementsList:
+        type: array
+        items:
+          $ref: '#/schema/FixedMovement'
+      spendingExpectationsList:
+        type: array
+        items:
+          $ref: '#/schema/SpendingExpectation'
+
+  Movement:
     type: object
-    title: State
+    title: Movement
     properties:
       id:
         type: integer
         format: int64
-      stateName:
+        example: null
+      profileId:
+        type: integer
+        format: int64
+      item:
         type: string
-        example: País Vasco
-      addressList:  
-        type: array
-        items:
-          $ref: '#/schema/Address'  
-        
-  City:
+        example: Leisure
+      description:
+        type: string
+        example: Beers friday night
+      amount:
+        type: string
+        format: decimal
+        example: 10.00
+      dateTime:
+        type: string
+        format: date-time
+        example: "2023-07-30T12:34:56Z"
+
+  FixedMovement:
     type: object
-    title: City
+    title: FixedMovement
     properties:
       id:
         type: integer
         format: int64
-      cityName:
+        example: null
+      profileId:
+        type: integer
+        format: int64
+      item:
         type: string
-        example: Bilbao
-      addressList:  
-        type: array
-        items:
-          $ref: '#/schema/Address'
-          
-  Street:
+        example: Car assurance
+      amount:
+        type: string
+        format: decimal
+        example: 100.00
+      startDate:
+        type: string
+        format: date
+        example: "2023-07-30"
+      endDate:
+        type: string
+        format: date
+      transactionFrequency:
+        type: string
+        example: 3month
+
+  SpendingExpectation:
     type: object
-    title: Street
+    title: SpendingExpectation
     properties:
       id:
         type: integer
         format: int64
-      streetName:
+        example: null
+      profileId:
+        type: integer
+        format: int64
+      item:
         type: string
-        example: Gran Vía de Don Diego López de Haro
-      addressList:  
-        type: array
-        items:
-          $ref: '#/schema/Address'
-          
-  Email:        
+        example: Leisure
+      amount:
+        type: string
+        format: decimal
+        example: 100.00
+      spendingFrequency:
+        type: string
+        example: week
+
+  Email:
     type: object
     title: Email
     properties:
       id:
         type: integer
         format: int64
+        example: null
       userDataId:
         type: integer
         format: int64
-        example: 1  
       email:
         type: string
         format: email
         pattern: ^\S+@\S+\.\S+$
+        example: a@a.com
       isLoginEmail:
         type: boolean
-        
-        
-  Phone:      
+
+  Phone:
     type: object
     title: Phone
     properties:
       id:
         type: integer
         format: int64
+        example: null
       userDataId:
         type: integer
         format: int64
-        example: 1  
       phoneType:
         type: string
         enum: [Home, Work, Mobile, Fax, Other]
-      phoneNumber:
+      phone:
         type: string
         pattern: '^\+?[1-9]\d{1,14}$'
+        example: +34666666666
+          
+#  Address:
+#    type: object
+#    title: user contact data
+#    properties:
+#      id:
+#        type: integer
+#        format: int64
+#      userDataId:
+#        type: integer
+#        format: int64
+#        example: 1
+#      countryId:
+#        type: integer
+#        format: int64
+#        example: 1
+#      stateId:
+#        type: integer
+#        format: int64
+#        example: 1
+#      cityId:
+#        type: integer
+#        format: int64
+#        example: 1
+#      zipCode:
+#        type: string
+#      streetId:
+#        type: integer
+#        format: int64
+#        example: 1
+#      houseNumber:
+#        type: string
+#        pattern: '^[0-9a-zA-Z\s/-]+$'
+#
+#  Country:
+#    type: object
+#    title: Country
+#    properties:
+#      id:
+#        type: integer
+#        format: int64
+#      countryName:
+#        type: string
+#        example: Spain
+#      countryIsoCode:
+#        type: string
+#        example: Spain
+#      addressList:
+#        type: array
+#        items:
+#          $ref: '#/schema/Address'
+#
+#  State:
+#    type: object
+#    title: State
+#    properties:
+#      id:
+#        type: integer
+#        format: int64
+#      stateName:
+#        type: string
+#        example: País Vasco
+#      addressList:
+#        type: array
+#        items:
+#          $ref: '#/schema/Address'
+#
+#  City:
+#    type: object
+#    title: City
+#    properties:
+#      id:
+#        type: integer
+#        format: int64
+#      cityName:
+#        type: string
+#        example: Bilbao
+#      addressList:
+#        type: array
+#        items:
+#          $ref: '#/schema/Address'
+#
+#  Street:
+#    type: object
+#    title: Street
+#    properties:
+#      id:
+#        type: integer
+#        format: int64
+#      streetName:
+#        type: string
+#        example: Gran Vía de Don Diego López de Haro
+#      addressList:
+#        type: array
+#        items:
+#          $ref: '#/schema/Address'
+#
+
         
         
         

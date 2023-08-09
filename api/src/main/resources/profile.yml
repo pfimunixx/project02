@@ -1,0 +1,95 @@
+/profile:
+  post:
+    tags:
+      - Profile
+    description: create Profile
+    operationId: createProfile
+    requestBody:
+      $ref: definitions/components.yml#/requestBodies/ProfileDto
+    responses:
+      "200":
+        $ref: definitions/components.yml#/responses/ProfileDto
+        description: successful operation
+      "401":
+        description: Unauthorized
+      "403":
+        description: Forbidden
+      "404":
+        description: Not Found
+    summary: create profile
+
+/profile/{id}:
+  get:
+    tags:
+      - Profile
+    description: get a profile by id
+    operationId: getProfileById
+    parameters:
+      - $ref: definitions/components.yml#/parameters/id
+    responses:
+      "200":
+        $ref: definitions/components.yml#/responses/ProfileDto
+        description: successful operation
+      "401":
+        description: Unauthorized
+      "403":
+        description: Forbidden
+      "404":
+        description: Not Found
+  put:
+    tags:
+      - Profile
+    description: update profile by id
+    operationId: updateProfileById
+    requestBody:
+      $ref: definitions/components.yml#/requestBodies/ProfileDto
+    parameters:
+      - $ref: definitions/components.yml#/parameters/id
+    responses:
+      "200":
+        $ref: definitions/components.yml#/responses/ProfileDto
+        description: successful operation
+      "401":
+        description: Unauthorized
+      "403":
+        description: Forbidden
+      "404":
+        description: Not Found
+  delete:
+    tags:
+      - Profile
+    description: delete profile by id
+    operationId: deleteProfileById
+    parameters:
+      - $ref: definitions/components.yml#/parameters/id
+    responses:
+      "204":
+        description: The resource was deleted successfully.
+      #        content:
+      #          application/json:
+      #            schema:
+      #              type: object
+      #              additionalProperties:
+      #                type: boolean
+      "401":
+        description: Unauthorized
+      "403":
+        description: Forbidden
+      "404":
+        description: Not Found
+
+/profiles:
+  get:
+    tags:
+      - Profile
+    description: get all profiles
+    operationId: getProfileList
+    responses:
+      "200":
+        $ref: definitions/components.yml#/responses/ProfileListDto
+      "401":
+        description: Unauthorized
+      "403":
+        description: Forbidden
+      "404":
+        description: Not Found

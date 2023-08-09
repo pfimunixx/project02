@@ -28,7 +28,6 @@ import lombok.Setter;
  * @author uli.baehr@imunixx.de
  */
 @Entity
-//@Table(name = "\"user\"") // why is user quoted may be I dont get the point
 @Table(name = "user_data")
 @Getter
 @Setter
@@ -43,26 +42,20 @@ public class UserData implements Serializable {
     @Column(name = "id", updatable = false, insertable = false)
     private Long id;
 
-    @OneToOne(cascade = {})
-    @JoinColumn(name = "user_id", nullable = true)
-    private User user;
-
-    @Column(name = "title", nullable = true)
-    private String title;
-
     @Column(name = "first_name", nullable = false)
     private String firstName;
 
-    @Column(name = "sure_name", nullable = false)
-    private String sureName;
+    @Column(name = "sur_name", nullable = false)
+    private String surName;
 
-    @OneToMany(mappedBy = "user_data", cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true)
-    private List<Address> addressList = new ArrayList<>();
+    @OneToOne
+    @JoinColumn(name = "user_id")
+    private User user;
 
-    @OneToMany(mappedBy = "user_data", cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true)
+    @OneToMany(mappedBy = "userData", cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true)
     private List<Email> emailList = new ArrayList<>();
 
-    @OneToMany(mappedBy = "user_data", cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true)
+    @OneToMany(mappedBy = "userData", cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true)
     private List<Phone> phoneList = new ArrayList<>();
 
 }

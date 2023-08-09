@@ -3,8 +3,10 @@ package de.imunixx.backend.controller;
 import de.imunixx.api.controller.UserApi;
 import de.imunixx.api.model.UserCreateDTO;
 import de.imunixx.api.model.UserDTO;
-import de.imunixx.api.model.UserUpdateDTO;
+import de.imunixx.api.model.UserDataDTO;
+import de.imunixx.backend.service.UserDataService;
 import de.imunixx.backend.service.UserService;
+import de.imunixx.backend.service.UserActivatedService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,8 +37,8 @@ public class UserController implements UserApi {
     }
 
     @Override
-    public ResponseEntity<UserDTO> updateUserById(Long id, @RequestBody UserUpdateDTO userUpdateDTO) {
-        return ResponseEntity.ok(userService.updateUser(userUpdateDTO));
+    public ResponseEntity<UserDTO> updateUserById(Long id, @RequestBody UserDTO userDTO) {
+        return ResponseEntity.ok(userService.updateUser(userDTO));
     }
 
     @Override

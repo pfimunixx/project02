@@ -2,14 +2,20 @@ package de.imunixx.api.entity;
 
 import jakarta.persistence.*;
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 
 @Entity
-//@Table(name = "\"user\"") // why is user quoted may be I dont get the point
-@Table(name = "user")
+@Table(name = "\"user\"") // why is user quoted may be I dont get the point.
+// Because "user" itself it is a SQL command, so you need to specify in that way that
+// it is just a table's name. If not, you will get an error. Try it in an SQL environment
+// and you will see.
+//@Table(name = "users")
 @Getter
 @Setter
 @AllArgsConstructor
@@ -46,22 +52,22 @@ public class User implements Serializable {
     @Column(name = "user_name", nullable = false, unique = true)
     private String userName;
     
-    // this is moved to Contact -> try to make it possible that user is able to login by userName or email
-    //@Column(nullable = false, unique = true)
-    //private String email;
-
-    // this should be come encoded from FE and also storded encoded in db
+    // this should come encoded from FE and also stored encoded in db
     @Column(nullable = false)
     private String password;
 
-    // i have no clou what is it for pls make a comment
+    // i have no clue what is it for pls make a comment:
+    // This is the code I want to use in order to create urls to update passwords and send confirmation emails to the user (maybe there's a better way)
     @Column(name = "user_code", nullable = false)
     private String userCode;
 
-    @Column(nullable = false)
-    private Boolean activated;
-    
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true)
+    private List<Profile> profilesList = new ArrayList<>();
+
     @OneToOne(cascade = {})
-    @JoinColumn(name = "user_data_id", nullable = true)
+    @JoinColumn(name = "userActivated_id", nullable = true)
+    private UserActivated userActivated;
+
+    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
     private UserData userData;
 }

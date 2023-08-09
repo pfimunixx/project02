@@ -15,10 +15,16 @@ tags:
     description: Operations to manage User
   - name: UserData
     description: Operations to manage UserData
-  - name: Address
-    description: Operations to manage Address  
-  - name: Country
-    description: Operations to manage Country  
+  - name: UserActivated
+    description: Operations to manage UserActivated
+  - name: Profile
+    description: Operations to manage Profile
+  - name: Movement
+    description: Operations to manage Movement
+  - name: FixedMovement
+    description: Operations to manage FixedMovement
+  - name: SpendingExpectation
+    description: Operations to manage SpendingExpectation
 
 paths:
   /user:
@@ -31,15 +37,48 @@ paths:
     $ref: user.yml#/~1user~1data
   /user/data/{id}:
     $ref: user.yml#/~1user~1data~1{id}
+  /user/activated:
+    $ref: user.yml#/~1user~1activated
+  /user/activated/{id}:
+    $ref: user.yml#/~1user~1activated~1{id}
     
-  /address:
-    $ref: address.yml#/~1address
-  /address/{id}:
-    $ref: address.yml#/~1address~1{id} 
-  /addresses:
-    $ref: address.yml#/~1addresses
+  /profile:
+    $ref: profile.yml#/~1profile
+  /profile/{id}:
+    $ref: profile.yml#/~1profile~1{id}
+  /profiles:
+    $ref: profile.yml#/~1profiles
     
-  /address/country:
-    $ref: address.yml#/~1address~1country  
-  /address/country/{id}:
-    $ref: address.yml#/~1address~1country~1{id} 
+  /movement:
+    $ref: movement.yml#/~1movement
+  /movement/{id}:
+    $ref: movement.yml#/~1movement~1{id}
+  /movements:
+    $ref: movement.yml#/~1movements
+    
+  /fixed-movement:
+    $ref: fixed-movement.yml#/~1fixed-movement
+  /fixed-movement/{id}:
+    $ref: fixed-movement.yml#/~1fixed-movement~1{id}
+  /fixed-movements:
+    $ref: fixed-movement.yml#/~1fixed-movements
+    
+  /spending-expectation:
+    $ref: spending-expectation.yml#/~1spending-expectation
+  /spending-expectation/{id}:
+    $ref: spending-expectation.yml#/~1spending-expectation~1{id}
+  /spending-expectations:
+    $ref: spending-expectation.yml#/~1spending-expectations
+
+
+#  /address:
+#    $ref: address.yml#/~1address
+#  /address/{id}:
+#    $ref: address.yml#/~1address~1{id}
+#  /addresses:
+#    $ref: address.yml#/~1addresses
+#
+#  /address/country:
+#    $ref: address.yml#/~1address~1country
+#  /address/country/{id}:
+#    $ref: address.yml#/~1address~1country~1{id}

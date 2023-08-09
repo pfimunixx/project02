@@ -1,11 +1,13 @@
 package de.imunixx.backend.service;
 
-import de.imunixx.api.entity.User;
+import de.imunixx.api.entity.*;
 import de.imunixx.api.mapper.BackEndMapper;
 import de.imunixx.api.model.UserCreateDTO;
 import de.imunixx.api.model.UserDTO;
-import de.imunixx.api.model.UserUpdateDTO;
+import de.imunixx.api.model.UserDataDTO;
 import de.imunixx.backend.exception.UserNotFoundException;
+import de.imunixx.backend.repository.UserActivatedRepository;
+import de.imunixx.backend.repository.UserDataRepository;
 import de.imunixx.backend.repository.UserRepository;
 import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
@@ -23,20 +25,34 @@ import java.util.List;
 public class UserService {
 
     private final UserRepository userRepository;
+    private final UserActivatedRepository userActivatedRepository;
+    private final UserDataRepository userDataRepository;
     private final BackEndMapper mapper;
 
     public UserDTO addUser(UserCreateDTO userCreateDTO) {
-        User entity = mapper.toEntityFromCreateDto(userCreateDTO);
-        return mapper.toDto(userRepository.save(entity));
+        User user = new User(null, userCreateDTO.getUserName(), userCreateDTO.getPassword(),
+                userCreateDTO.getUserCode(),null, null, null);
+        UserData userData = new UserData(null, userCreateDTO.getFirstName(), userCreateDTO.getSurName(), user,
+                null, null);
+        UserActivated userActivated = new UserActivated(null, false, user);
+
+        userActivated = userActivatedRepository.save(userActivated);
+        userData = userDataRepository.save(userData);
+        user.setUserActivated(userActivated);
+        user.setUserData(userData);
+
+        user = userRepository.save(user);
+        return mapper.toDto(user);
     }
+
 
     public UserDTO findUserById(Long id) {
         return mapper.toDto(userRepository.findUserById(id)
                 .orElseThrow(() -> new UserNotFoundException("User by id" + id + " not found")));
     }
 
-    public UserDTO updateUser(UserUpdateDTO userUpdateDTO) {
-        return mapper.toDto(userRepository.save(mapper.toEntityFromUpdateDto(userUpdateDTO)));
+    public UserDTO updateUser(UserDTO userDTO) {
+        return mapper.toDto(userRepository.save(mapper.toEntity(userDTO)));
     }
 
     public void deleteUserById(Long id) {
