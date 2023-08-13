@@ -1,8 +1,12 @@
 package de.imunixx.backend.service;
 
+import de.imunixx.api.entity.FixedMovement;
 import de.imunixx.api.entity.Profile;
 import de.imunixx.api.mapper.BackEndMapper;
+import de.imunixx.api.model.FixedMovementDTO;
+import de.imunixx.api.model.MovementDTO;
 import de.imunixx.api.model.ProfileDTO;
+import de.imunixx.api.model.SpendingExpectationDTO;
 import de.imunixx.backend.exception.ProfileNotFoundException;
 import de.imunixx.backend.repository.ProfileRepository;
 import jakarta.transaction.Transactional;
@@ -46,5 +50,17 @@ public class ProfileService {
 
     public List<ProfileDTO> findAllProfiles() {
         return mapper.toProfileDtoList(profileRepository.findAll());
+    }
+
+    public List<MovementDTO> getMovementsListById(Long id) {
+        return mapper.toMovementDtoList(profileRepository.findMovementsListById(id));
+    }
+
+    public List<FixedMovementDTO> getFixedMovementsListById(Long id) {
+        return mapper.toFixedMovementDtoList(profileRepository.findFixedMovementsListById(id));
+    }
+
+    public List<SpendingExpectationDTO> getSpendingExpectationsListById(Long id) {
+        return mapper.toSpendingExpectationDtoList(profileRepository.findSpendingExpectationsListById(id));
     }
 }

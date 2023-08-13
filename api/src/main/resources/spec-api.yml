@@ -41,6 +41,8 @@ paths:
     $ref: user.yml#/~1user~1activated
   /user/activated/{id}:
     $ref: user.yml#/~1user~1activated~1{id}
+  /user/{id}/profiles:
+    $ref: user.yml#/~1user~1{id}~1profiles
     
   /profile:
     $ref: profile.yml#/~1profile
@@ -48,6 +50,12 @@ paths:
     $ref: profile.yml#/~1profile~1{id}
   /profiles:
     $ref: profile.yml#/~1profiles
+  /profile/{id}/movements:
+    $ref: profile.yml#/~1profile~1{id}~1movements
+  /profile/{id}/fixed-movements:
+    $ref: profile.yml#/~1profile~1{id}~1fixed-movements
+  /profile/{id}/spending-expectations:
+    $ref: profile.yml#/~1profile~1{id}~1spending-expectations
     
   /movement:
     $ref: movement.yml#/~1movement

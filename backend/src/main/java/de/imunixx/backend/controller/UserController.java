@@ -1,6 +1,7 @@
 package de.imunixx.backend.controller;
 
 import de.imunixx.api.controller.UserApi;
+import de.imunixx.api.model.ProfileDTO;
 import de.imunixx.api.model.UserCreateDTO;
 import de.imunixx.api.model.UserDTO;
 import de.imunixx.api.model.UserDataDTO;
@@ -50,6 +51,11 @@ public class UserController implements UserApi {
     @Override
     public ResponseEntity<List<UserDTO>> getUserList() {
         return ResponseEntity.ok(userService.findAllUsers());
+    }
+
+    @Override
+    public ResponseEntity<List<ProfileDTO>> getProfilesListById(Long id) {
+        return ResponseEntity.ok(userService.findProfilesListById(id));
     }
 
 }

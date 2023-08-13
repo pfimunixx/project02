@@ -2,7 +2,11 @@ package de.imunixx.backend.controller;
 
 
 import de.imunixx.api.controller.ProfileApi;
+import de.imunixx.api.entity.FixedMovement;
+import de.imunixx.api.model.FixedMovementDTO;
+import de.imunixx.api.model.MovementDTO;
 import de.imunixx.api.model.ProfileDTO;
+import de.imunixx.api.model.SpendingExpectationDTO;
 import de.imunixx.backend.service.ProfileService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -50,5 +54,20 @@ public class ProfileController implements ProfileApi {
     @Override
     public ResponseEntity<List<ProfileDTO>> getProfileList() {
         return ResponseEntity.ok(profileService.findAllProfiles());
+    }
+
+    @Override
+    public ResponseEntity<List<MovementDTO>> getMovementsListById(Long id) {
+        return ResponseEntity.ok(profileService.getMovementsListById(id));
+    }
+
+    @Override
+    public ResponseEntity<List<FixedMovementDTO>> getFixedMovementsListById(Long id) {
+        return ResponseEntity.ok(profileService.getFixedMovementsListById(id));
+    }
+
+    @Override
+    public ResponseEntity<List<SpendingExpectationDTO>> getSpendingExpectationsListById(Long id) {
+        return ResponseEntity.ok(profileService.getSpendingExpectationsListById(id));
     }
 }

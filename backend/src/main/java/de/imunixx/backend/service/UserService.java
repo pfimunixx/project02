@@ -2,9 +2,9 @@ package de.imunixx.backend.service;
 
 import de.imunixx.api.entity.*;
 import de.imunixx.api.mapper.BackEndMapper;
+import de.imunixx.api.model.ProfileDTO;
 import de.imunixx.api.model.UserCreateDTO;
 import de.imunixx.api.model.UserDTO;
-import de.imunixx.api.model.UserDataDTO;
 import de.imunixx.backend.exception.UserNotFoundException;
 import de.imunixx.backend.repository.UserActivatedRepository;
 import de.imunixx.backend.repository.UserDataRepository;
@@ -64,6 +64,10 @@ public class UserService {
 
     public List<UserDTO> findAllUsers() {
         return mapper.toUserDtoList(userRepository.findAll());
+    }
+
+    public List<ProfileDTO> findProfilesListById(Long id) {
+        return mapper.toProfileDtoList(userRepository.findProfilesListById(id));
     }
 
 }
