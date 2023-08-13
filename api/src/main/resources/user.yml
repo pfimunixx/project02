@@ -17,6 +17,25 @@
       "404":
         description: Not Found
     summary: create user
+
+/user/login:
+  post:
+    tags:
+      - User
+    description: login a user
+    operationId: login
+    requestBody:
+      $ref: definitions/components.yml#/requestBodies/UserLoginDto
+    responses:
+      "200":
+        $ref: definitions/components.yml#/responses/UserDto
+        description: successful operation
+      "401":
+        description: Unauthorized
+      "403":
+        description: Forbidden
+      "404":
+        description: Not Found
     
 /user/data:
   post:

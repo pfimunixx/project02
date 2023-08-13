@@ -1,10 +1,8 @@
 package de.imunixx.backend.controller;
 
 import de.imunixx.api.controller.UserApi;
-import de.imunixx.api.model.ProfileDTO;
-import de.imunixx.api.model.UserCreateDTO;
-import de.imunixx.api.model.UserDTO;
-import de.imunixx.api.model.UserDataDTO;
+import de.imunixx.api.model.*;
+import de.imunixx.backend.exception.UserNotFoundException;
 import de.imunixx.backend.service.UserDataService;
 import de.imunixx.backend.service.UserService;
 import de.imunixx.backend.service.UserActivatedService;
@@ -56,6 +54,15 @@ public class UserController implements UserApi {
     @Override
     public ResponseEntity<List<ProfileDTO>> getProfilesListById(Long id) {
         return ResponseEntity.ok(userService.findProfilesListById(id));
+    }
+
+    @Override
+    public ResponseEntity<UserDTO> login(@RequestBody UserLoginDTO userLoginDTO) {
+        try {
+            return ResponseEntity.ok().body(userService.login(userLoginDTO));
+        } catch (UserNotFoundException e) {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
+        }
     }
 
 }

@@ -29,6 +29,17 @@ schema:
         format: int64
         example: null
 
+  UserLogin:
+    type: object
+    title: User
+    properties:
+      userName:
+        example: pf@imunixx.de
+        type: string
+      password:
+        example: 03ac674216f3e15c761ee1a5e255f067953623c8b388b4459e13f978d7c846f4
+        type: string
+
   UserCreate:
     type: object
     title: UserCreate

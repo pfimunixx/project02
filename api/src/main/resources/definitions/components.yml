@@ -22,6 +22,14 @@ requestBodies:
         schema:
           $ref: schema.yml#/schema/User
 
+  UserLoginDto:
+    description: UserLogin
+    required: true
+    content:
+      application/json:
+        schema:
+          $ref: schema.yml#/schema/UserLogin
+
   UserCreateDto:
     description: UserCreate
     required: true

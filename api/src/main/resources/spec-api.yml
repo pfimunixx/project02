@@ -27,10 +27,13 @@ tags:
     description: Operations to manage SpendingExpectation
 
 paths:
+
   /user:
     $ref: user.yml#/~1user
   /user/{id}:
     $ref: user.yml#/~1user~1{id}
+  /user/login:
+    $ref: user.yml#/~1user~1login
   /users:
     $ref: user.yml#/~1users
   /user/data:

@@ -5,6 +5,7 @@ import de.imunixx.api.mapper.BackEndMapper;
 import de.imunixx.api.model.ProfileDTO;
 import de.imunixx.api.model.UserCreateDTO;
 import de.imunixx.api.model.UserDTO;
+import de.imunixx.api.model.UserLoginDTO;
 import de.imunixx.backend.exception.UserNotFoundException;
 import de.imunixx.backend.repository.UserActivatedRepository;
 import de.imunixx.backend.repository.UserDataRepository;
@@ -68,6 +69,12 @@ public class UserService {
 
     public List<ProfileDTO> findProfilesListById(Long id) {
         return mapper.toProfileDtoList(userRepository.findProfilesListById(id));
+    }
+
+    public UserDTO login(UserLoginDTO userLoginDTO) {
+        return mapper.toDto(userRepository.findUserByUserNameAndPassword(userLoginDTO.getUserName(), userLoginDTO.getPassword())
+                .orElseThrow(()-> new UserNotFoundException("User by userName " + userLoginDTO.getUserName() +
+                        "not found with that password")));
     }
 
 }
