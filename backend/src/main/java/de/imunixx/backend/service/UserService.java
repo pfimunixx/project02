@@ -58,6 +58,8 @@ public class UserService {
 
     public void deleteUserById(Long id) {
         userRepository.deleteUserById(id);
+        userDataRepository.deleteUserDataByUserId(id);
+        userActivatedRepository.deleteUserActivatedByUserId(id);
         if(userRepository.existsById(id)) {
             throw new UserNotFoundException("User by id" + id + " could not be deleted");
         }

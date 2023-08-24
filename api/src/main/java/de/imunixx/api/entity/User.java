@@ -64,10 +64,11 @@ public class User implements Serializable {
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true)
     private List<Profile> profilesList = new ArrayList<>();
 
-    @OneToOne(cascade = {})
+    @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinColumn(name = "userActivated_id", nullable = true)
     private UserActivated userActivated;
 
-    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
+    @JoinColumn(name = "userData_id", nullable = true)
     private UserData userData;
 }

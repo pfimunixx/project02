@@ -9,5 +9,7 @@ public interface UserActivatedRepository extends JpaRepository<UserActivated, Lo
 
     void deleteUserActivatedById(Long id);
 
+    void deleteUserActivatedByUserId(Long userId);
+
     Optional<UserActivated> findUserActivatedById(Long id);
 }
