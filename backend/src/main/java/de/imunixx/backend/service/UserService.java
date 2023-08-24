@@ -6,6 +6,7 @@ import de.imunixx.api.model.ProfileDTO;
 import de.imunixx.api.model.UserCreateDTO;
 import de.imunixx.api.model.UserDTO;
 import de.imunixx.api.model.UserLoginDTO;
+import de.imunixx.backend.exception.UserDataNotFoundException;
 import de.imunixx.backend.exception.UserNotFoundException;
 import de.imunixx.backend.repository.UserActivatedRepository;
 import de.imunixx.backend.repository.UserDataRepository;
@@ -53,7 +54,12 @@ public class UserService {
     }
 
     public UserDTO updateUser(UserDTO userDTO) {
-        return mapper.toDto(userRepository.save(mapper.toEntity(userDTO)));
+        User user = mapper.toEntity(userDTO);
+        user.setUserData(userDataRepository.findUserDataById(userDTO.getUserDataId())
+                .orElseThrow(() -> new UserDataNotFoundException("UserData by id" + userDTO.getUserDataId() + " not found")));
+        user.setUserActivated(userActivatedRepository.findUserActivatedById(userDTO.getUserActivatedId())
+                .orElseThrow(() -> new UserDataNotFoundException("UserData by id" + userDTO.getUserActivatedId() + " not found")));
+        return mapper.toDto(userRepository.save(user));
     }
 
     public void deleteUserById(Long id) {

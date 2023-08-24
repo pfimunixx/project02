@@ -41,10 +41,10 @@ public class Phone implements Serializable {
     @JoinColumn(name = "user_data_id", nullable = true)
     private UserData userData;
 
-    @Column(name = "phone_type", nullable = true)
-    private String phoneType;
+    @Column(name = "prefix", nullable = false)
+    private String prefix;
 
-    @Column(name = "phone", nullable = false, unique = true)
+    @Column(name = "number", nullable = false, unique = true)
     private String phone;
     
 }

@@ -31,7 +31,7 @@ public class FixedMovement extends ItemAmount implements Serializable {
     @Column(name = "start_date", nullable = false)
     private Date startDate;
 
-    @Column(name = "end_date", nullable = false)
+    @Column(name = "end_date", nullable = true)
     private Date endDate;
 
     @Column(name = "transaction_frequency", nullable = false)

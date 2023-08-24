@@ -226,6 +226,42 @@ responses:
           type: array
           items:
             $ref: schema.yml#/schema/SpendingExpectation
+
+  EmailDto:
+    description: Email
+    required: true
+    content:
+      application/json:
+        schema:
+          $ref: schema.yml#/schema/Email
+          
+  EmailListDto:
+    description: EmailList
+    required: true
+    content:
+      application/json:
+        schema:
+          type: array
+          items:
+            $ref: schema.yml#/schema/Email
+
+  PhoneDto:
+    description: Phone
+    required: true
+    content:
+      application/json:
+        schema:
+          $ref: schema.yml#/schema/Phone
+          
+  PhoneListDto:
+    description: PhoneList
+    required: true
+    content:
+      application/json:
+        schema:
+          type: array
+          items:
+            $ref: schema.yml#/schema/Phone
           
 #  AddressDto:
 #    description: Address

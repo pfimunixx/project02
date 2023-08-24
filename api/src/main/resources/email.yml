@@ -1,0 +1,95 @@
+/email:
+  post:
+    tags:
+      - Email
+    description: create Email
+    operationId: createEmail
+    requestBody:
+      $ref: definitions/components.yml#/requestBodies/EmailDto
+    responses:
+      "200":
+        $ref: definitions/components.yml#/responses/EmailDto
+        description: successful operation
+      "401":
+        description: Unauthorized
+      "403":
+        description: Forbidden
+      "404":
+        description: Not Found
+    summary: create email
+
+/email/{id}:
+  get:
+    tags:
+      - Email
+    description: get a email by id
+    operationId: getEmailById
+    parameters:
+      - $ref: definitions/components.yml#/parameters/id
+    responses:
+      "200":
+        $ref: definitions/components.yml#/responses/EmailDto
+        description: successful operation
+      "401":
+        description: Unauthorized
+      "403":
+        description: Forbidden
+      "404":
+        description: Not Found
+  put:
+    tags:
+      - Email
+    description: update email by id
+    operationId: updateEmailById
+    requestBody:
+      $ref: definitions/components.yml#/requestBodies/EmailDto
+    parameters:
+      - $ref: definitions/components.yml#/parameters/id
+    responses:
+      "200":
+        $ref: definitions/components.yml#/responses/EmailDto
+        description: successful operation
+      "401":
+        description: Unauthorized
+      "403":
+        description: Forbidden
+      "404":
+        description: Not Found
+  delete:
+    tags:
+      - Email
+    description: delete email by id
+    operationId: deleteEmailById
+    parameters:
+      - $ref: definitions/components.yml#/parameters/id
+    responses:
+      "204":
+        description: The resource was deleted successfully.
+      #        content:
+      #          application/json:
+      #            schema:
+      #              type: object
+      #              additionalProperties:
+      #                type: boolean
+      "401":
+        description: Unauthorized
+      "403":
+        description: Forbidden
+      "404":
+        description: Not Found
+
+/emails:
+  get:
+    tags:
+      - Email
+    description: get all emails
+    operationId: getEmailList
+    responses:
+      "200":
+        $ref: definitions/components.yml#/responses/EmailListDto
+      "401":
+        description: Unauthorized
+      "403":
+        description: Forbidden
+      "404":
+        description: Not Found

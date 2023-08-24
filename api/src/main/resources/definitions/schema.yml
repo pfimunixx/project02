@@ -240,13 +240,14 @@ schema:
       userDataId:
         type: integer
         format: int64
-      phoneType:
+      prefix:
         type: string
-        enum: [Home, Work, Mobile, Fax, Other]
+        pattern: '^\d{1,4}$'
+        example: 34
       phone:
         type: string
-        pattern: '^\+?[1-9]\d{1,14}$'
-        example: +34666666666
+        pattern: '^\d{5,15}$'
+        example: 666666666
           
 #  Address:
 #    type: object

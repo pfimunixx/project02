@@ -1,0 +1,95 @@
+/phone:
+  post:
+    tags:
+      - Phone
+    description: create Phone
+    operationId: createPhone
+    requestBody:
+      $ref: definitions/components.yml#/requestBodies/PhoneDto
+    responses:
+      "200":
+        $ref: definitions/components.yml#/responses/PhoneDto
+        description: successful operation
+      "401":
+        description: Unauthorized
+      "403":
+        description: Forbidden
+      "404":
+        description: Not Found
+    summary: create phone
+
+/phone/{id}:
+  get:
+    tags:
+      - Phone
+    description: get a phone by id
+    operationId: getPhoneById
+    parameters:
+      - $ref: definitions/components.yml#/parameters/id
+    responses:
+      "200":
+        $ref: definitions/components.yml#/responses/PhoneDto
+        description: successful operation
+      "401":
+        description: Unauthorized
+      "403":
+        description: Forbidden
+      "404":
+        description: Not Found
+  put:
+    tags:
+      - Phone
+    description: update phone by id
+    operationId: updatePhoneById
+    requestBody:
+      $ref: definitions/components.yml#/requestBodies/PhoneDto
+    parameters:
+      - $ref: definitions/components.yml#/parameters/id
+    responses:
+      "200":
+        $ref: definitions/components.yml#/responses/PhoneDto
+        description: successful operation
+      "401":
+        description: Unauthorized
+      "403":
+        description: Forbidden
+      "404":
+        description: Not Found
+  delete:
+    tags:
+      - Phone
+    description: delete phone by id
+    operationId: deletePhoneById
+    parameters:
+      - $ref: definitions/components.yml#/parameters/id
+    responses:
+      "204":
+        description: The resource was deleted successfully.
+      #        content:
+      #          application/json:
+      #            schema:
+      #              type: object
+      #              additionalProperties:
+      #                type: boolean
+      "401":
+        description: Unauthorized
+      "403":
+        description: Forbidden
+      "404":
+        description: Not Found
+
+/phones:
+  get:
+    tags:
+      - Phone
+    description: get all phones
+    operationId: getPhoneList
+    responses:
+      "200":
+        $ref: definitions/components.yml#/responses/PhoneListDto
+      "401":
+        description: Unauthorized
+      "403":
+        description: Forbidden
+      "404":
+        description: Not Found

@@ -36,16 +36,26 @@ paths:
     $ref: user.yml#/~1user~1login
   /users:
     $ref: user.yml#/~1users
-  /user/data:
-    $ref: user.yml#/~1user~1data
   /user/data/{id}:
     $ref: user.yml#/~1user~1data~1{id}
-  /user/activated:
-    $ref: user.yml#/~1user~1activated
   /user/activated/{id}:
     $ref: user.yml#/~1user~1activated~1{id}
   /user/{id}/profiles:
     $ref: user.yml#/~1user~1{id}~1profiles
+    
+  /email:
+    $ref: email.yml#/~1email
+  /email/{id}:
+    $ref: email.yml#/~1email~1{id}
+  /emails:
+    $ref: email.yml#/~1emails
+    
+  /phone:
+    $ref: phone.yml#/~1phone
+  /phone/{id}:
+    $ref: phone.yml#/~1phone~1{id}
+  /phones:
+    $ref: phone.yml#/~1phones
     
   /profile:
     $ref: profile.yml#/~1profile

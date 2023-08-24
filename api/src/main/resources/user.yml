@@ -37,46 +37,6 @@
       "404":
         description: Not Found
     
-/user/data:
-  post:
-    tags:
-      - UserData
-    description: create UserData
-    operationId: createUserData
-    requestBody:
-      $ref: definitions/components.yml#/requestBodies/UserDataDto
-    responses:
-      "200":
-        $ref: definitions/components.yml#/responses/UserDataDto
-        description: successful operation
-      "401":
-        description: Unauthorized
-      "403":
-        description: Forbidden
-      "404":
-        description: Not Found
-    summary: create userData
-
-/user/activated:
-  post:
-    tags:
-      - UserActivated
-    description: create UserActivated
-    operationId: createUserActivated
-    requestBody:
-      $ref: definitions/components.yml#/requestBodies/UserActivatedDto
-    responses:
-      "200":
-        $ref: definitions/components.yml#/responses/UserActivatedDto
-        description: successful operation
-      "401":
-        description: Unauthorized
-      "403":
-        description: Forbidden
-      "404":
-        description: Not Found
-    summary: create userActivated
-    
 /user/{id}:
   get:
     tags:
@@ -174,28 +134,6 @@
         description: Forbidden
       "404":
         description: Not Found
-  delete:
-    tags:
-      - UserData
-    description: delete userData by id
-    operationId: deleteUserDataById
-    parameters:
-      - $ref: definitions/components.yml#/parameters/id
-    responses:
-      "204":
-        description: The resource was deleted successfully.
-#        content:
-#          application/json:
-#            schema:
-#              type: object
-#              additionalProperties:
-#                type: boolean
-      "401":
-        description: Unauthorized
-      "403":
-        description: Forbidden
-      "404":
-        description: Not Found
 
 /user/activated/{id}:
   get:
@@ -219,7 +157,7 @@
     tags:
       - UserActivated
     description: update userActivated by id
-    operationId: updateUserDataById
+    operationId: updateUserActivatedById
     requestBody:
       $ref: definitions/components.yml#/requestBodies/UserActivatedDto
     parameters:
@@ -228,28 +166,6 @@
       "200":
         $ref: definitions/components.yml#/responses/UserActivatedDto
         description: successful operation
-      "401":
-        description: Unauthorized
-      "403":
-        description: Forbidden
-      "404":
-        description: Not Found
-  delete:
-    tags:
-      - UserActivated
-    description: delete userActivated by id
-    operationId: deleteUserActivatedById
-    parameters:
-      - $ref: definitions/components.yml#/parameters/id
-    responses:
-      "204":
-        description: The resource was deleted successfully.
-      #        content:
-      #          application/json:
-      #            schema:
-      #              type: object
-      #              additionalProperties:
-      #                type: boolean
       "401":
         description: Unauthorized
       "403":
