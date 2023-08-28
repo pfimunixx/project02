@@ -240,15 +240,32 @@ schema:
       userDataId:
         type: integer
         format: int64
-      prefix:
-        type: string
-        pattern: '^\d{1,4}$'
-        example: 34
-      phone:
+      prefixId:
+        type: integer
+        format: int64
+      number:
         type: string
         pattern: '^\d{5,15}$'
         example: 666666666
-          
+
+  Prefix:
+    type: object
+    title: Prefix
+    properties:
+      id:
+        type: integer
+        format: int64
+        example: null
+      country:
+        type: string
+        example: Spain
+      dialCode:
+        type: string
+        example: 34
+      code:
+        type: string
+        example: ES
+
 #  Address:
 #    type: object
 #    title: user contact data

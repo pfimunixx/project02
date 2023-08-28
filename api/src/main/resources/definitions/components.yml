@@ -102,6 +102,24 @@ requestBodies:
         schema:
           $ref: schema.yml#/schema/Phone
 
+  PrefixDto:
+    description: Prefix
+    required: true
+    content:
+      application/json:
+        schema:
+          $ref: schema.yml#/schema/Prefix
+
+  PrefixListDto:
+    description: PrefixList
+    required: true
+    content:
+      application/json:
+        schema:
+          type: array
+          items:
+            $ref: schema.yml#/schema/Prefix
+
 #  AddressDto:
 #    description: Address
 #    required: true
@@ -262,6 +280,24 @@ responses:
           type: array
           items:
             $ref: schema.yml#/schema/Phone
+
+  PrefixDto:
+    description: Prefix
+    required: true
+    content:
+      application/json:
+        schema:
+          $ref: schema.yml#/schema/Prefix
+
+  PrefixListDto:
+    description: PrefixList
+    required: true
+    content:
+      application/json:
+        schema:
+          type: array
+          items:
+            $ref: schema.yml#/schema/Prefix
           
 #  AddressDto:
 #    description: Address

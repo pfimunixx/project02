@@ -90,7 +90,13 @@ paths:
     $ref: spending-expectation.yml#/~1spending-expectation~1{id}
   /spending-expectations:
     $ref: spending-expectation.yml#/~1spending-expectations
-
+    
+  /prefix:
+    $ref: prefix.yml#/~1prefix
+  /prefix/{id}:
+    $ref: prefix.yml#/~1prefix~1{id}
+  /prefixes:
+    $ref: prefix.yml#/~1prefixes
 
 #  /address:
 #    $ref: address.yml#/~1address

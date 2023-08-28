@@ -83,11 +83,20 @@ public interface BackEndMapper {
 
     //Phone
     @Mapping(target = "userData.id", source = "userDataId")
+    @Mapping(target = "prefix.id", source = "prefixId")
     Phone toEntity(PhoneDTO dto);
     @Mapping(target = "userDataId", source = "userData.id")
+    @Mapping(target = "prefixId", source = "prefix.id")
     PhoneDTO toDto(Phone entity);
     List<Phone> toPhoneList(List<PhoneDTO> dtoList);
     List<PhoneDTO> toPhoneDtoList(List<Phone> entityList);
+
+    //Prefix
+    Prefix toEntity(PrefixDTO dto);
+    PrefixDTO toDto(Prefix dto);
+
+    List<Prefix> toPrefixList(List<PrefixDTO> dtoList);
+    List<PrefixDTO> toPrefixDtoList(List<Prefix> entityList);
 
     default Date mapOffsetDateTimeToDate(OffsetDateTime offsetDateTime) {
         return DateUtils.offsetDateTimeToDate(offsetDateTime);
